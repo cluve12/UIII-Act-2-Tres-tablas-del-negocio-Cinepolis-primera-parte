@@ -1,2 +1,2 @@
 # UIII-Act-2-Tres-tablas-del-negocio-subway-primera-parte
-<img width="928" height="629" alt="image" src="https://github.com/user-attachments/assets/6af6258a-3e6c-4017-84e5-280613f98f89" />
+<img width="968" height="684" alt="image" src="https://github.com/user-attachments/assets/8542da1b-4b47-44ca-9516-64006bf847a0" />
