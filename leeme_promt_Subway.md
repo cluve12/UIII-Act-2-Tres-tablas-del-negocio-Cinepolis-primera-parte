@@ -1,108 +1,105 @@
-Primera parte
-Proyecto: Subway.
-lenguaje: Python.
-Framework: Django.
-Editor: VS code.
-1 Procedimiento para crear carpeta del Proyecto: UIII_Subway_0777
-2 procedimiento para abrir vs code sobre la carpeta
-UIII_Subway_0777
-3 procedimiento para abrir terminal en vs code
-4 Procedimiento para crear carpeta entorno virtual “.venv” desde
-terminal de vs code
-5 Procedimiento para activar el entorno virtual.
-6 procedimiento para activar intérprete de python.
-7 Procedimiento para instalar Django
-8 procedimiento para crear proyecto backend_Subway sin duplicar
-carpeta.
-9 procedimiento para ejecutar servidor en el puerto 8036
-10 procedimiento para copiar y pegar el link en el navegador.
-11 procedimiento para crear aplicacion app_Subway
-12 Aqui el modelo models.py
-=-=-=-=-=-
+# Proyecto: Subway (Primera Parte)
+
+**Lenguaje:** Python
+**Framework:** Django
+**Editor:** VS Code
+
+---
+
+1.  **Crear carpeta del Proyecto:** `UIII_Subway_0777`.
+2.  **Abrir VS Code:** Abrir VS Code sobre la carpeta `UIII_Subway_0777`.
+3.  **Abrir Terminal:** Abrir la terminal integrada en VS Code.
+4.  **Crear Entorno Virtual:** Crear la carpeta de entorno virtual `.venv` desde la terminal de VS Code.
+5.  **Activar Entorno Virtual:** Procedimiento para activar el entorno virtual.
+6.  **Activar Intérprete de Python:** Procedimiento para activar el intérprete de Python.
+7.  **Instalar Django:** Procedimiento para instalar Django.
+8.  **Crear Proyecto Backend:** Crear el proyecto `backend_Subway` sin duplicar la carpeta.
+9.  **Ejecutar Servidor:** Procedimiento para ejecutar el servidor en el puerto `8036`.
+10. **Copiar Link:** Copiar y pegar el link del servidor en el navegador.
+11. **Crear Aplicación:** Procedimiento para crear la aplicación `app_Subway`.
+
+---
+
+### 12. Modelos (`models.py`)
+
+```python
 from django.db import models
-==========================================
-MODELO: SUCURSALES
-==========================================
+
+# ==========================================
+# MODELO: SUCURSALES
+# ==========================================
 class Sucursal(models.Model):
-nombre = models.CharField(max_length=50)
-telefono = models.CharField(max_length=15)
-horario_apertura = models.TimeField()
-horario_cierre = models.TimeField()
-direccion = models.CharField(max_length=100)
-# id_empleado no es un campo directo en el modelo de Django para una relación 1 a muchos desde Empleado
-# se gestionaría a través de la relación inversa desde Empleado.
-def str(self):
-return self.nombre
-==========================================
-MODELO: CLIENTES
-==========================================
+    nombre = models.CharField(max_length=50)
+    telefono = models.CharField(max_length=15)
+    horario_apertura = models.TimeField()
+    horario_cierre = models.TimeField()
+    direccion = models.CharField(max_length=100)
+    def __str__(self):
+        return self.nombre
+
+# ==========================================
+# MODELO: CLIENTES
+# ==========================================
 class Cliente(models.Model):
-nombre = models.CharField(max_length=100)
-direccion = models.CharField(max_length=200)
-telefono = models.CharField(max_length=15)
-correo = models.CharField(max_length=100)
-fecha_registro = models.DateField()
-sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE, related_name="clientes")
-def str(self):
-return self.nombre
-==========================================
-MODELO: EMPLEADOS
-==========================================
+    nombre = models.CharField(max_length=100)
+    direccion = models.CharField(max_length=200)
+    telefono = models.CharField(max_length=15)
+    correo = models.CharField(max_length=100)
+    fecha_registro = models.DateField()
+    sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE, related_name="clientes")
+    def __str__(self):
+        return self.nombre
+
+# ==========================================
+# MODELO: EMPLEADOS
+# ==========================================
 class Empleado(models.Model):
-sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE, related_name="empleados")
-telefono = models.CharField(max_length=15)
-salario = models.DecimalField(max_digits=10, decimal_places=2)
-fecha_contratacion = models.DateField()
-puesto = models.CharField(max_length=50) # Cambiado a CharField para el puesto
-def str(self):
-return f"{self.puesto} - {self.sucursal.nombre}"
-=-=-=-=-=-
-12.5 Procedimiento para realizar las migraciones(makemigrations y
-migrate.
-13 primero trabajamos con el MODELO: SUCURSALES
-14 En view de app_Subway crear las funciones con sus códigos
-correspondientes (inicio_subway, agregar_sucursal,
-actualizar_sucursal, realizar_actualizacion_sucursal,
-borrar_sucursal)
-15 Crear la carpeta “templates” dentro de “app_Subway”.
-16 En la carpeta templates crear los archivos html (base.html,
-header.html, navbar.html, footer.html, inicio.html).
-17 En el archivo base.html agregar bootstrap para css y js.
-18 En el archivo navbar.html incluir las opciones ( “Sistema de
-Administración Subway”, “Inicio”, “Sucursales”,en submenu de
-sucursales(Agregar Sucursal,ver Sucursal, actualizar Sucursal,
-borrar Sucursal), “Clientes” en submenu de Clientes(Agregar Cliente,ver
-Cliente, actualizar Cliente, borrar Cliente)
-“Empleados” en submenu de Empleados(Agregar Empleado,ver Empleado,
-actualizar Empleado, borrar Empleado), incluir iconos a las opciones
-principales, no en los submenu.
-19 En el archivo footer.html incluir derechos de autor,fecha del
-sistema y “Creado por Ing. Eliseo Nava, Cbtis 128” y mantenerla fija
-al final de la página.
-20 En el archivo inicio.html se usa para colocar información del
-sistema más una imagen tomada desde la red sobre Subway.
-21 Crear la subcarpeta carpeta sucursal dentro de
-app_Subway\templates.
-22 crear los archivos html con su codigo correspondientes de
-(agregar_sucursal.html, ver_sucursales.html mostrar en tabla con
-los botones ver, editar y borrar, actualizar_sucursal.html,
-borrar_sucursal.html)
-dentro de app_Subway\templates\sucursal.
-23 No utilizar forms.py.
-24 procedimiento para crear el archivo urls.py en app_Subway con
-el código correspondiente para acceder a las funciones de views.py
-para operaciones de crud en sucursales.
-25 procedimiento para agregar app_Subway en settings.py de
-backend_Subway
-26 realizar las configuraciones correspondiente a urls.py de
-backend_Subway para enlazar con app_Subway
-27 procedimiento para registrar los modelos en admin.py y volver a
-realizar las migraciones.
-27 por lo pronto solo trabajar con “Sucursal” dejar pendiente #
-MODELO: CLIENTES y # MODELO: EMPLEADOS
-28 Utilizar colores suaves, atractivos y modernos, el código de las
-páginas web sencillas.
-28 No validar entrada de datos.
-29 Al inicio crear la estructura completa de carpetas y archivos.
-30 proyecto totalmente funcional.
-31 finalmente ejecutar servidor en el puerto puerto 8036.
+    sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE, related_name="empleados")
+    telefono = models.CharField(max_length=15)
+    salario = models.DecimalField(max_digits=10, decimal_places=2)
+    fecha_contratacion = models.DateField()
+    puesto = models.CharField(max_length=50)
+    def __str__(self):
+        return f"{self.puesto} - {self.sucursal.nombre}"
+```
+12.5. Realizar Migraciones: Procedimiento para realizar las migraciones (makemigrations y migrate).
+13. Trabajar con el Modelo: Primero, trabajar con el MODELO: SUCURSALES.
+14. Funciones en views.py: En views.py de app_Subway, crear las funciones con sus códigos correspondientes:
+* inicio_subway
+* agregar_sucursal
+* actualizar_sucursal
+* realizar_actualizacion_sucursal
+* borrar_sucursal
+15. Crear Carpeta templates: Crear la carpeta templates dentro de app_Subway.
+16. Crear Archivos HTML Base: En la carpeta templates, crear los archivos HTML:
+* base.html
+* header.html
+* navbar.html
+* footer.html
+* inicio.html
+17. Integrar Bootstrap: En base.html, agregar Bootstrap para CSS y JS.
+18. Configurar navbar.html: Incluir las siguientes opciones:
+* "Sistema de Administración Subway"
+* "Inicio"
+* "Sucursales" (con submenú: "Agregar Sucursal", "Ver Sucursales", "Actualizar Sucursal", "Borrar Sucursal")
+* "Clientes" (con submenú: "Agregar Cliente", "Ver Clientes", "Actualizar Cliente", "Borrar Cliente")
+* "Empleados" (con submenú: "Agregar Empleado", "Ver Empleados", "Actualizar Empleado", "Borrar Empleado")
+* Nota: Incluir iconos solo en las opciones principales (no en los submenús).
+19. Configurar footer.html: Incluir derechos de autor, fecha del sistema y "Creado por Ing. Eliseo Nava, Cbtis 128". Mantenerlo fijo al final de la página.
+20. Configurar inicio.html: Usar para colocar información del sistema más una imagen tomada de la red sobre Subway.
+21. Crear Subcarpeta sucursal: Crear la subcarpeta sucursal dentro de app_Subway/templates.
+22. Crear Archivos HTML para CRUD de Sucursal: Dentro de app_Subway/templates/sucursal, crear los archivos HTML con su código correspondiente:
+* agregar_sucursal.html
+* ver_sucursales.html (mostrar en tabla con botones "ver", "editar" y "borrar")
+* actualizar_sucursal.html
+* borrar_sucursal.html
+23. No Usar forms.py: Abstenerse de utilizar forms.py.
+24. Crear urls.py de la Aplicación: Procedimiento para crear el archivo urls.py en app_Subway con el código correspondiente para acceder a las funciones de views.py para operaciones CRUD en sucursales.
+25. Agregar app_Subway a settings.py: Procedimiento para agregar app_Subway en settings.py de backend_Subway.
+26. Configurar urls.py del Proyecto: Realizar las configuraciones correspondientes en urls.py de backend_Subway para enlazar con app_Subway.
+27. Registrar Modelos en admin.py: Procedimiento para registrar los modelos en admin.py y volver a realizar las migraciones. Por lo pronto, solo trabajar con "Sucursal"; dejar pendientes los modelos "CLIENTES" y "EMPLEADOS".
+28. Estilo de Diseño: Utilizar colores suaves, atractivos y modernos. El código de las páginas web debe ser sencillo.
+28. Validación de Datos: No validar la entrada de datos.
+29. Estructura Inicial: Al inicio, crear la estructura completa de carpetas y archivos.
+30. Funcionalidad: El proyecto debe ser totalmente funcional.
+31. Ejecución Final: Finalmente, ejecutar el servidor en el puerto 8036.
