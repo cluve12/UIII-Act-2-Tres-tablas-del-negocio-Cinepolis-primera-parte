@@ -6,15 +6,15 @@
 
 ---
 
-1.  **Crear carpeta del Proyecto:** `UIII_Subway_0777`.
-2.  **Abrir VS Code:** Abrir VS Code sobre la carpeta `UIII_Subway_0777`.
+1.  **Crear carpeta del Proyecto:** `UIII_Subway_0689`.
+2.  **Abrir VS Code:** Abrir VS Code sobre la carpeta `UIII_Subway_0689`.
 3.  **Abrir Terminal:** Abrir la terminal integrada en VS Code.
 4.  **Crear Entorno Virtual:** Crear la carpeta de entorno virtual `.venv` desde la terminal de VS Code.
 5.  **Activar Entorno Virtual:** Procedimiento para activar el entorno virtual.
 6.  **Activar Intérprete de Python:** Procedimiento para activar el intérprete de Python.
 7.  **Instalar Django:** Procedimiento para instalar Django.
 8.  **Crear Proyecto Backend:** Crear el proyecto `backend_Subway` sin duplicar la carpeta.
-9.  **Ejecutar Servidor:** Procedimiento para ejecutar el servidor en el puerto `8036`.
+9.  **Ejecutar Servidor:** Procedimiento para ejecutar el servidor en el puerto `8039`.
 10. **Copiar Link:** Copiar y pegar el link del servidor en el navegador.
 11. **Crear Aplicación:** Procedimiento para crear la aplicación `app_Subway`.
 
